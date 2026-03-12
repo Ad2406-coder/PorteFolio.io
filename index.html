@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurélien Daly — Développeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ee;
+    --white: #ffffff;
+    --ink: #1a1612;
+    --ink2: #4a4540;
+    --muted: #9a948e;
+    --accent: #d4522a;
+    --line: rgba(26,22,18,0.09);
+    --tag-bg: #eeebe6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 64px;
+    background: rgba(245,242,238,0.88);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 900;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-btn {
+    padding: 10px 22px !important;
+    background: var(--ink) !important; color: white !important;
+    border-radius: 100px; font-weight: 600 !important; font-size: 13px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-btn:hover { background: var(--accent) !important; color: white !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
+    max-width: 1220px; margin: 0 auto; padding: 130px 64px 80px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 100px; padding: 7px 16px 7px 10px;
+    font-size: 12px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 32px;
+    opacity: 0; animation: up 0.7s 0.1s forwards;
+  }
+  .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 6vw, 86px); font-weight: 900;
+    letter-spacing: -3px; line-height: 0.97; margin-bottom: 28px;
+    opacity: 0; animation: up 0.7s 0.25s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-desc {
+    font-size: 15px; line-height: 1.8; color: var(--ink2); font-weight: 300;
+    max-width: 420px; margin-bottom: 40px;
+    opacity: 0; animation: up 0.7s 0.4s forwards;
+  }
+  .hero-btns { display: flex; gap: 12px; opacity: 0; animation: up 0.7s 0.55s forwards; }
+  .btn-fill {
+    padding: 13px 28px; background: var(--ink); color: white;
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    border-radius: 100px; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-fill:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-ghost {
+    padding: 13px 28px; background: transparent; color: var(--ink);
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    border-radius: 100px; border: 1.5px solid rgba(26,22,18,0.18);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  .hero-right { opacity: 0; animation: fadein 1s 0.5s forwards; }
+  .hero-card {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 24px; padding: 36px;
+    box-shadow: 0 24px 64px rgba(26,22,18,0.08);
+  }
+  .hcard-top { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .av {
+    width: 50px; height: 50px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), #e8824f);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900;
+    color: white; flex-shrink: 0;
+  }
+  .hcard-name { font-weight: 600; font-size: 15px; }
+  .hcard-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .hcard-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hstat { background: var(--tag-bg); border-radius: 14px; padding: 16px; }
+  .hstat-n {
+    font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900;
+    letter-spacing: -1px; line-height: 1; margin-bottom: 3px;
+  }
+  .hstat-l { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+  /* SECTION COMMONS */
+  .wrap { max-width: 1220px; margin: 0 auto; padding: 100px 64px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+  }
+  .eyebrow::before { content: ''; width: 24px; height: 1.5px; background: var(--accent); }
+  .sh {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px); font-weight: 900;
+    letter-spacing: -2px; line-height: 1.05;
+  }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start;
+  }
+  .about-text { font-size: 15px; line-height: 1.85; color: var(--ink2); font-weight: 300; margin-top: 24px; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .chip {
+    padding: 8px 16px; background: var(--tag-bg); border: 1px solid var(--line);
+    border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--ink2);
+  }
+  .timeline { margin-top: 8px; }
+  .ti {
+    display: grid; grid-template-columns: 72px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .ti:first-child { border-top: 1px solid var(--line); }
+  .ti-year { font-size: 12px; font-weight: 600; color: var(--muted); padding-top: 3px; }
+  .ti-title { font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+  .ti-place { font-size: 13px; color: var(--muted); }
+
+  /* SKILLS */
+  .skills-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; margin-top: 56px; align-items: start; }
+  .skills-intro { font-size: 15px; line-height: 1.8; color: var(--ink2); font-weight: 300; }
+  .skills-cols { display: flex; flex-direction: column; gap: 36px; }
+  .sk-row-label { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    padding: 9px 18px; background: var(--white); border: 1.5px solid var(--line);
+    border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--ink);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s; cursor: default;
+  }
+  .pill:hover { background: var(--ink); color: white; border-color: var(--ink); transform: translateY(-2px); }
+  .pill.main { background: var(--ink); color: white; border-color: var(--ink); }
+
+  /* PROJECTS */
+  #projects { background: var(--white); }
+  .ph { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+  .ph-count { font-size: 13px; color: var(--muted); font-weight: 300; }
+  .plist { display: flex; flex-direction: column; gap: 2px; }
+  .prow {
+    display: grid; grid-template-columns: 52px 1fr auto auto;
+    gap: 28px; align-items: center;
+    padding: 26px 28px; background: var(--bg); border-radius: 14px;
+    text-decoration: none; color: var(--ink);
+    transition: background 0.25s, transform 0.25s;
+    cursor: pointer;
+  }
+  .prow:hover { background: var(--ink); color: white; transform: translateX(8px); }
+  .prow:hover .pnum { color: rgba(255,255,255,0.15); }
+  .prow:hover .pdesc { color: rgba(255,255,255,0.55); }
+  .prow:hover .ptag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); border-color: transparent; }
+  .prow:hover .parr { transform: rotate(-45deg); color: white; }
+  .pnum { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--line); letter-spacing: -1px; transition: color 0.25s; }
+  .ptitle { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 3px; }
+  .pdesc { font-size: 13px; color: var(--muted); font-weight: 300; transition: color 0.25s; }
+  .ptags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .ptag {
+    font-size: 11px; font-weight: 500; padding: 5px 12px;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 100px; color: var(--ink2); transition: all 0.25s;
+  }
+  .parr { font-size: 20px; color: var(--muted); transition: transform 0.25s, color 0.25s; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-big { font-family: 'Playfair Display', serif; font-size: clamp(44px, 5vw, 68px); font-weight: 900; letter-spacing: -3px; line-height: 1.02; margin-bottom: 20px; }
+  .contact-big em { font-style: italic; color: var(--accent); }
+  .contact-sub { font-size: 15px; line-height: 1.8; color: var(--ink2); font-weight: 300; max-width: 360px; }
+  .ccard {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 24px; padding: 36px;
+    box-shadow: 0 20px 56px rgba(26,22,18,0.07);
+  }
+  .cf-label { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; margin-top: 22px; }
+  .cf-label:first-child { margin-top: 0; }
+  .cf-val { font-size: 15px; font-weight: 500; }
+  .cf-val a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212,82,42,0.25); transition: border-color 0.2s; }
+  .cf-val a:hover { border-color: var(--accent); }
+  .socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .soc {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 18px; background: var(--tag-bg); border: 1.5px solid var(--line);
+    border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--ink);
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .soc:hover { background: var(--ink); color: white; border-color: var(--ink); transform: translateY(-2px); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 26px 64px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes up { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:translateY(0) } }
+  @keyframes fadein { from { opacity:0 } to { opacity:1 } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links li:not(:last-child) { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 110px 24px 60px; gap: 40px; }
+    .hero-right { order: -1; }
+    .hero-card { max-width: 100%; }
+    .wrap { padding: 60px 24px; }
+    .about-grid, .skills-layout, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ph { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .prow { grid-template-columns: 1fr auto; }
+    .pnum, .ptags { display: none; }
+    footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Aurélien Daly<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact" class="nav-btn">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-badge"><span class="dot"></span> Disponible pour de nouveaux projets</div>
+    <h1 class="hero-title">Développeur<br>Web &amp; <em>Logiciel</em></h1>
+    <p class="hero-desc">Je conçois et développe des applications web modernes et performantes — du frontend réactif aux architectures backend solides.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-fill">Voir mes projets</a>
+      <a href="#contact" class="btn-ghost">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hcard-top">
+        <div class="av">AD</div>
+        <div>
+          <div class="hcard-name">Aurélien Daly</div>
+          <div class="hcard-role">Développeur Full Stack</div>
+        </div>
+      </div>
+      <div class="hcard-stats">
+        <div class="hstat"><div class="hstat-n">3+</div><div class="hstat-l">Ans d'expérience</div></div>
+        <div class="hstat"><div class="hstat-n">15+</div><div class="hstat-l">Projets livrés</div></div>
+        <div class="hstat"><div class="hstat-n">10+</div><div class="hstat-l">Technologies</div></div>
+        <div class="hstat"><div class="hstat-n">∞</div><div class="hstat-l">Lignes de code</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow">À propos</span>
+        <h2 class="sh">Passionné<br>par le code.</h2>
+        <p class="about-text">Développeur web passionné, j'aime transformer des idées en expériences digitales soignées. Mon approche mêle rigueur technique et sensibilité design pour livrer des produits qui font la différence.</p>
+        <p class="about-text">Toujours en veille sur les dernières technologies, j'apprécie autant travailler en équipe que de manière autonome sur des projets ambitieux.</p>
+        <div class="chips">
+          <span class="chip">🇫🇷 Basé en France</span>
+          <span class="chip">🎯 Full Stack</span>
+          <span class="chip">🚀 Open to remote</span>
+          <span class="chip">☕ Code + café</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="timeline">
+          <div class="ti">
+            <div class="ti-year">2024</div>
+            <div><div class="ti-title">Développeur Full Stack</div><div class="ti-place">Entreprise / Projet — Présent</div></div>
+          </div>
+          <div class="ti">
+            <div class="ti-year">2023</div>
+            <div><div class="ti-title">Développeur Frontend</div><div class="ti-place">Entreprise / Formation</div></div>
+          </div>
+          <div class="ti">
+            <div class="ti-year">2022</div>
+            <div><div class="ti-title">Formation Développement Web</div><div class="ti-place">École / Bootcamp</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow reveal">Compétences</span>
+    <h2 class="sh reveal">Stack technique</h2>
+    <div class="skills-layout">
+      <div class="reveal">
+        <p class="skills-intro">Des outils soigneusement choisis pour chaque besoin — du prototypage rapide aux architectures scalables.</p>
+      </div>
+      <div class="skills-cols">
+        <div class="reveal">
+          <div class="sk-row-label">Frontend</div>
+          <div class="pills">
+            <span class="pill main">React</span>
+            <span class="pill main">JavaScript</span>
+            <span class="pill main">TypeScript</span>
+            <span class="pill">Vue.js</span>
+            <span class="pill">HTML5</span>
+            <span class="pill">CSS3</span>
+            <span class="pill">Tailwind</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="sk-row-label">Backend</div>
+          <div class="pills">
+            <span class="pill main">Node.js</span>
+            <span class="pill main">Python</span>
+            <span class="pill">Express</span>
+            <span class="pill">REST API</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">MongoDB</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="sk-row-label">Outils</div>
+          <div class="pills">
+            <span class="pill main">Git</span>
+            <span class="pill">Docker</span>
+            <span class="pill">Linux</span>
+            <span class="pill">Figma</span>
+            <span class="pill">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="ph reveal">
+      <div>
+        <span class="eyebrow">Projets</span>
+        <h2 class="sh">Réalisations</h2>
+      </div>
+      <span class="ph-count">3 projets sélectionnés</span>
+    </div>
+    <div class="plist">
+      <div class="prow reveal">
+        <div class="pnum">01</div>
+        <div><div class="ptitle">Projet Alpha</div><div class="pdesc">Application web full-stack avec tableau de bord temps réel et API RESTful</div></div>
+        <div class="ptags"><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">PostgreSQL</span></div>
+        <div class="parr">↗</div>
+      </div>
+      <div class="prow reveal">
+        <div class="pnum">02</div>
+        <div><div class="ptitle">Projet Beta</div><div class="pdesc">API backend scalable avec microservices, docs Swagger et tests automatisés</div></div>
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span class="ptag">MongoDB</span></div>
+        <div class="parr">↗</div>
+      </div>
+      <div class="prow reveal">
+        <div class="pnum">03</div>
+        <div><div class="ptitle">Projet Gamma</div><div class="pdesc">Interface moderne avec animations fluides et design system complet</div></div>
+        <div class="ptags"><span class="ptag">Vue.js</span><span class="ptag">TypeScript</span><span class="ptag">GSAP</span></div>
+        <div class="parr">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <h2 class="contact-big">Travaillons<br><em>ensemble.</em></h2>
+        <p class="contact-sub">Un projet en tête ? Une opportunité à discuter ? Je suis ouvert aux collaborations et nouvelles aventures.</p>
+      </div>
+      <div class="reveal">
+        <div class="ccard">
+          <div class="cf-label">Email</div>
+          <div class="cf-val"><a href="mailto:aurelien.daly@email.com">aurelien.daly@email.com</a></div>
+          <div class="cf-label">Localisation</div>
+          <div class="cf-val">France 🇫🇷</div>
+          <div class="cf-label">Disponibilité</div>
+          <div class="cf-val" style="display:flex;align-items:center;gap:8px">
+            <span style="width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;animation:blink 2s infinite"></span>
+            Disponible
+          </div>
+          <div class="socials">
+            <a href="https://github.com/" target="_blank" class="soc">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/" target="_blank" class="soc">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Aurélien Daly</span>
+  <span>Conçu &amp; développé avec soin ✦</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 90);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a:not(.nav-btn)');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 160) cur = s.id; });
+    links.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--ink)' : '';
+      a.style.fontWeight = a.getAttribute('href') === '#' + cur ? '600' : '';
+    });
+  });
+</script>
+</body>
+</html>
