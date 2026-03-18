@@ -448,7 +448,7 @@
         <span class="eyebrow">Projets</span>
         <h2 class="sh">Réalisations</h2>
       </div>
-      <span class="ph-count">3 projets sélectionnés</span>
+      <span class="ph-count">4 projets sélectionnés</span>
     </div>
     <div class="pgrid">
       <div class="pcard reveal" onclick="openModal('p1')">
@@ -457,12 +457,13 @@
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Projet Alpha</div>
-          <div class="pdesc">Application web full-stack avec tableau de bord temps réel et API RESTful</div>
+          <div class="ptitle">Outil de Gestion Universitaire</div>
+          <div class="pdesc">Application Java MVC avec gestion d'équipe et conception UML</div>
           <div class="ptags">
-            <span class="ptag">React</span>
-            <span class="ptag">Node.js</span>
-            <span class="ptag">PostgreSQL</span>
+            <span class="ptag">Java</span>
+            <span class="ptag">Swing</span>
+            <span class="ptag">MVC</span>
+            <span class="ptag">Scrum</span>
           </div>
         </div>
       </div>
@@ -472,12 +473,12 @@
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Projet Beta</div>
-          <div class="pdesc">API backend scalable avec microservices, docs Swagger et tests automatisés</div>
+          <div class="ptitle">Base de Données Oracle</div>
+          <div class="pdesc">Modélisation et implémentation complète d'une BDD avec procédures et triggers</div>
           <div class="ptags">
-            <span class="ptag">Python</span>
-            <span class="ptag">FastAPI</span>
-            <span class="ptag">MongoDB</span>
+            <span class="ptag">PL/SQL</span>
+            <span class="ptag">Oracle</span>
+            <span class="ptag">MCD/SR</span>
           </div>
         </div>
       </div>
@@ -487,12 +488,27 @@
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Projet Gamma</div>
-          <div class="pdesc">Interface moderne avec animations fluides et design system complet</div>
+          <div class="ptitle">Site Internet</div>
+          <div class="pdesc">Site web développé en collaboration en temps réel sur Replit</div>
           <div class="ptags">
-            <span class="ptag">Vue.js</span>
-            <span class="ptag">TypeScript</span>
-            <span class="ptag">GSAP</span>
+            <span class="ptag">HTML</span>
+            <span class="ptag">CSS</span>
+            <span class="ptag">PHP</span>
+          </div>
+        </div>
+      </div>
+      <div class="pcard reveal" onclick="openModal('p4')">
+        <div class="pcard-top">
+          <div class="pnum">04</div>
+          <div class="parr">↗</div>
+        </div>
+        <div>
+          <div class="ptitle">Attelle Motorisée Genou</div>
+          <div class="pdesc">Système embarqué motorisé avec programmation Arduino et rapport technique</div>
+          <div class="ptags">
+            <span class="ptag">Arduino</span>
+            <span class="ptag">Embarqué</span>
+            <span class="ptag">STI2D</span>
           </div>
         </div>
       </div>
@@ -512,29 +528,42 @@
 const projects = {
   p1: {
     num: 'Projet 01',
-    title: 'Projet Alpha',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    description: 'Application web full-stack avec tableau de bord temps réel et API RESTful. Le projet intègre une interface interactive construite avec React et un backend Node.js connecté à une base de données PostgreSQL.',
-    role: 'Développeur Full-Stack',
-    date: '2025',
+    title: 'Outil de Gestion Universitaire',
+    tags: ['Java', 'Swing', 'MVC', 'Scrum'],
+    description: 'Développement d\'une application de gestion universitaire en Java avec une architecture MVC et une interface graphique Swing. J\'ai managé une équipe de 3 développeurs en méthode Scrum pour assurer le bon déroulement du projet.',
+    role: 'Chef de projet & Développeur Java',
+    date: '2024 – 2025',
+    lieu: 'Université Paris-Saclay',
     link: '#'
   },
   p2: {
     num: 'Projet 02',
-    title: 'Projet Beta',
-    tags: ['Python', 'FastAPI', 'MongoDB'],
-    description: 'API backend scalable conçue avec une architecture microservices, documentation Swagger intégrée et suite de tests automatisés. Déployée sur un environnement Docker pour faciliter la scalabilité.',
-    role: 'Développeur Backend',
-    date: '2025',
+    title: 'Base de Données Oracle',
+    tags: ['PL/SQL', 'Oracle', 'MCD/SR'],
+    description: 'Conception et implémentation complète d\'une base de données Oracle : modélisation via MCD et Schéma Relationnel, création de la base, jeux de test, fonctions, procédures stockées et triggers.',
+    role: 'Développeur Base de Données',
+    date: '2024 – 2025',
+    lieu: 'Université Paris-Saclay',
     link: '#'
   },
   p3: {
-    num: 'Projet Gamma',
-    title: 'Projet Gamma',
-    tags: ['Vue.js', 'TypeScript', 'GSAP'],
-    description: 'Interface web moderne avec animations fluides et design system complet. Utilisation de GSAP pour les transitions et TypeScript pour une base de code robuste et maintenable.',
-    role: 'Développeur Frontend',
+    num: 'Projet 03',
+    title: 'Site Internet',
+    tags: ['HTML', 'CSS', 'PHP'],
+    description: 'Réalisation d\'un site internet complet en HTML/CSS avec développement collaboratif en temps réel sur l\'outil Replit. Travail en équipe avec partage de code en direct.',
+    role: 'Développeur Web Frontend',
     date: '2024',
+    lieu: 'Université Paris-Saclay',
+    link: '#'
+  },
+  p4: {
+    num: 'Projet 04',
+    title: 'Attelle Motorisée Genou',
+    tags: ['Arduino', 'Embarqué', 'STI2D'],
+    description: 'Projet de terminale STI2D : assemblage d\'une attelle motorisée pour le genou, développement du programme de contrôle sur Arduino et rédaction d\'un rapport technique complet.',
+    role: 'Développeur Embarqué',
+    date: '2023',
+    lieu: 'Lycée parc Vilgénis – Massy',
     link: '#'
   }
 };
@@ -551,6 +580,8 @@ function openModal(id) {
     <p class="modal-body">${p.description}</p>
     <div class="modal-label">Rôle</div>
     <p class="modal-body">${p.role}</p>
+    <div class="modal-label">Lieu</div>
+    <p class="modal-body">${p.lieu}</p>
     <div class="modal-label">Année</div>
     <p class="modal-body">${p.date}</p>
     <a href="${p.link}" class="modal-link">Voir le projet ↗</a>
