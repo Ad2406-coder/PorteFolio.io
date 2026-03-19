@@ -474,30 +474,14 @@
       <span class="ph-count"></span>
     </div>
     <div class="pgrid">
-      <div class="pcard reveal" onclick="openModal('p0')">
-        <div class="pcard-top">
-          <div class="pnum">00</div>
-          <div class="parr">↗</div>
-        </div>
-        <div>
-          <div class="ptitle">Outil de Gestion Universitaire</div>
-          <div class="pdesc">Application Java MVC/ javaFX avec gestion d'équipe et analyse</div>
-          <div class="ptags">
-            <span class="ptag">Java</span>
-            <span class="ptag">Swing</span>
-            <span class="ptag">MVC</span>
-            <span class="ptag">Scrum</span>
-          </div>
-        </div>
-      </div>
       <div class="pcard reveal" onclick="openModal('p1')">
         <div class="pcard-top">
           <div class="pnum">01</div>
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Outil de Gestion des maisons Universitaire</div>
-          <div class="pdesc">Application Java MVC avec gestion d'équipe et conception UML</div>
+          <div class="ptitle">Outil de Gestion Universitaire</div>
+          <div class="pdesc">Application Java MVC/ javaFX avec gestion d'équipe et analyse</div>
           <div class="ptags">
             <span class="ptag">Java</span>
             <span class="ptag">Swing</span>
@@ -512,12 +496,13 @@
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Base de Données Oracle</div>
-          <div class="pdesc">Modélisation et implémentation complète d'une BDD avec procédures et triggers</div>
+          <div class="ptitle">Outil de Gestion des maisons Universitaire</div>
+          <div class="pdesc">Application Java MVC avec gestion d'équipe et conception UML</div>
           <div class="ptags">
-            <span class="ptag">PL/SQL</span>
-            <span class="ptag">Oracle</span>
-            <span class="ptag">MCD/SR</span>
+            <span class="ptag">Java</span>
+            <span class="ptag">Swing</span>
+            <span class="ptag">MVC</span>
+            <span class="ptag">Scrum</span>
           </div>
         </div>
       </div>
@@ -527,18 +512,32 @@
           <div class="parr">↗</div>
         </div>
         <div>
-          <div class="ptitle">Site Internet</div>
-          <div class="pdesc">Site web développé en collaboration en temps réel sur Replit</div>
+          <div class="ptitle">Base de Données Oracle</div>
+          <div class="pdesc">Modélisation et implémentation complète d'une BDD avec procédures et triggers</div>
           <div class="ptags">
-            <span class="ptag">HTML</span>
-            <span class="ptag">CSS</span>
-            <span class="ptag">PHP</span>
+            <span class="ptag">PL/SQL</span>
+            <span class="ptag">Oracle</span>
+            <span class="ptag">MCD/SR</span>
           </div>
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p4')">
         <div class="pcard-top">
           <div class="pnum">04</div>
+          <div class="parr">↗</div>
+        </div>
+        <div>
+          <div class="ptitle">Site Internet</div>
+          <div class="pdesc">Site web développé en collaboration en temps réel sur Replit</div>
+          <div class="ptags">
+            <span class="ptag">HTML</span>
+            <span class="ptag">CSS</span>
+          </div>
+        </div>
+      </div>
+      <div class="pcard reveal" onclick="openModal('p5')">
+        <div class="pcard-top">
+          <div class="pnum">05</div>
           <div class="parr">↗</div>
         </div>
         <div>
@@ -565,8 +564,8 @@
 
 <script>
 const projects = {
-    p0: {
-    num: 'Projet 00',
+    p1: {
+    num: 'Projet 01',
     title: 'Outil de Gestion Universitaire',
     tags: ['Java', 'Swing', 'MVC', 'Scrum','API REST','PHP'],
     description: 'Développement d\'une application de gestion universitaire en Java avec une architecture MVC et une interface graphique javaFX.L\'acquisition des informations a été réalisée en établissant une connexion avec une base de données. Mysql créé au préalable.  J\'ai managé une équipe de 3 développeurs durant 2 mois en méthode Scrum pour assurer le bon déroulement du projet.Le projet était composé de plusieurs étapes : une étape d\'analyse, une étape de préparation et une étape de développement.',
@@ -575,8 +574,8 @@ const projects = {
     lieu: 'Université Paris-Saclay',
     link: 'https://github.com/Ad2406-coder/Gestionnaire-universitaire/tree/master'
   },
-  p1: {
-    num: 'Projet 01',
+  p2: {
+    num: 'Projet 02',
     title: 'Outil de Gestion des Maison Universitaire',
     tags: ['Java', 'Swing', 'MVC', 'Scrum'],
     description: 'Développement d\'une application de gestion universitaire en Java avec une architecture MVC et une interface graphique Swing. J\'ai managé une équipe de 3 développeurs durant 2 mois en méthode Scrum pour assurer le bon déroulement du projet.Le projet était composé de plusieurs étapes : une étape d\'analyse, une étape de préparation et une étape de développement.',
@@ -585,8 +584,8 @@ const projects = {
     lieu: 'Université Paris-Saclay',
     link: 'https://github.com/Ad2406-coder/CIUP/tree/master'
   },
-  p2: {
-    num: 'Projet 02',
+  p3: {
+    num: 'Projet 03',
     title: 'Base de Données Oracle',
     tags: ['PL/SQL', 'MySQL', 'MCD/SR'],
     description: 'Conception et implémentation complète d\'une base de données Oracle : modélisation via MCD et Schéma Relationnel, création de la base, jeux de test, fonctions, procédures stockées et triggers.',
@@ -595,17 +594,17 @@ const projects = {
     lieu: 'Université Paris-Saclay',
     link: 'https://github.com/Ad2406-coder/ProjetBD/tree/master'
   },
-  p3: {
-    num: 'Projet 03',
+  p4: {
+    num: 'Projet 04',
     title: 'Site Internet',
-    tags: ['HTML', 'CSS', 'PHP'],
+    tags: ['HTML', 'CSS'],
     description: 'Réalisation d\'un site internet complet en HTML/CSS avec développement collaboratif en temps réel sur l\'outil Replit. Travail en équipe avec partage de code en direct.',
     role: 'Développeur Web Frontend',
     date: '2024',
     lieu: 'Université Paris-Saclay',
     link: '#'
   },
-  p4: {
+  p5: {
     num: 'Projet 04',
     title: 'Attelle Motorisée Genou',
     tags: ['Arduino', 'Embarqué', 'STI2D'],
