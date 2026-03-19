@@ -20,7 +20,20 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+.pcard-img {
+  width: 100%;
+  height: 160px; /* Ajuste selon ton design */
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
 
+.pcard-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Remplit proprement */
+  display: block;
+}
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -475,6 +488,9 @@
     </div>
     <div class="pgrid">
       <div class="pcard reveal" onclick="openModal('p1')">
+          <div class="pcard-img">
+              <img src="images/projet1.jpg" alt="Projet 1">
+          </div>
         <div class="pcard-top">
           <div class="pnum">01</div>
           <div class="parr">↗</div>
@@ -491,6 +507,9 @@
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p2')">
+          <div class="pcard-img">
+              <img src="images/projet2.jpg" alt="Projet 2">
+          </div>
         <div class="pcard-top">
           <div class="pnum">02</div>
           <div class="parr">↗</div>
@@ -507,6 +526,9 @@
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p3')">
+          <div class="pcard-img">
+              <img src="images/projet3.jpg" alt="Projet 3">
+          </div>
         <div class="pcard-top">
           <div class="pnum">03</div>
           <div class="parr">↗</div>
@@ -522,6 +544,9 @@
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p4')">
+           <div class="pcard-img">
+              <img src="images/projet4.jpg" alt="Projet 4">
+          </div>
         <div class="pcard-top">
           <div class="pnum">04</div>
           <div class="parr">↗</div>
@@ -536,6 +561,9 @@
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p5')">
+          <div class="pcard-img">
+              <img src="images/projet5.jpg" alt="Projet 5">
+          </div>
         <div class="pcard-top">
           <div class="pnum">05</div>
           <div class="parr">↗</div>
@@ -550,6 +578,9 @@
         </div>
       </div>
       <div class="pcard reveal" onclick="openModal('p6')">
+          <div class="pcard-img">
+              <img src="images/projet6.jpg" alt="Projet 6">
+          </div>
         <div class="pcard-top">
           <div class="pnum">06</div>
           <div class="parr">↗</div>
